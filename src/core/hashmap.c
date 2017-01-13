@@ -115,6 +115,8 @@ swHashMap* swHashMap_new(uint32_t bucket_num, swHashMap_dtor dtor)
     if (!(root->hh.tbl))
     {
         swWarn("malloc for table failed.");
+        swHashMap_node_free(hmap, root);
+        sw_free(hmap);
         return NULL;
     }
 
